@@ -1,5 +1,6 @@
-FROM 436174799454.dkr.ecr.us-east-1.amazonaws.com/httpd24:latest
-#FROM httpd:2.4
-MAINTAINER Varun
-COPY ./index.html /usr/local/apache2/htdocs/
+FROM ubuntu:20.04
+MAINTAINER 
+RUN apt-get -y update && apt-get -y install nginx
+COPY nginx.conf /etc/nginx/conf
 EXPOSE 80
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
